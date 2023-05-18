@@ -31,7 +31,9 @@ public class SecurityController {
             throw  new Exception("Invalid username/password");
         }
 
+
         return jwtUtil.generateToken(authRequest.getUser_name());
+
 
     }
 }
