@@ -17,8 +17,9 @@ public class TrainReservationApplication {
 	private UserDao userDao;
 	@PostConstruct
 	public void initialiseUsers(){
-		List<User>users = Stream.of(new User(1,"Alan","alan@alan","Admin","Alan", null),
-		new User(2,"Sagar","alan@alan","User","Alan", null)).collect(Collectors.toList());
+		List<User>users = Stream.of(
+				new User(1,"Alan","alan@alan","Admin","Alan", null),
+				new User(2,"Sagar","alan@alan","User","Alan", null)).collect(Collectors.toList());
 	userDao.saveAll(users);
 	}
 

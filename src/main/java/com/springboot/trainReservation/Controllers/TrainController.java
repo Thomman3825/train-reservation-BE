@@ -23,20 +23,15 @@ public class TrainController {
     AuthReq authReq;
     @Autowired
     User user;
-    String token = jwtUtil.generateToken(user.getUser_name());
-    @Autowired
 
 
-    public boolean isAdmin(String token){
-        Claims claims = jwtUtil.extractAllClaims(token);
-        String role = (String) claims.get("role");
-        if(role=="Admin") return true;
-        else return false;
-    }
+
+
+
     @PostMapping("/addTrain")
     public String addTrain(List<Train> trains){
 
-        if(isAdmin(token)) {
+        if(trainService.isAdmin(jwtUtil.generateToken(user.getUser_name()))) {
             trainService.addTrain(trains);
             return "Train Added";
         }

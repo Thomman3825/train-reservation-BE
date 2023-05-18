@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TrainService {
     String addTrain(List<Train> trains);
+
+    boolean isAdmin(String token);
 }
