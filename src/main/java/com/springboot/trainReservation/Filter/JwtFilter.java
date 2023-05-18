@@ -1,5 +1,6 @@
 package com.springboot.trainReservation.Filter;
 
+import com.springboot.trainReservation.Services.CustomUserDetailService;
 import com.springboot.trainReservation.Util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +21,7 @@ public class JwtFilter extends OncePerRequestFilter{
     JwtUtil jwtUtill;
 
     @Autowired
-    CustomUserDetailsService customUserDetailsService;
+    CustomUserDetailService customUserDetailService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -40,10 +41,10 @@ public class JwtFilter extends OncePerRequestFilter{
 
     }
 
-    private void validatingUserToken(String userName, String token, HttpServletRequest request) {
+    private void validatingUserToken(String user_name, String token, HttpServletRequest request) {
 
-        if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = customUserDetailsService.loadUserByUsername(userName);
+        if(user_name != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = customUserDetailService.loadUserByUsername(user_name);
 
             if(jwtUtill.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =

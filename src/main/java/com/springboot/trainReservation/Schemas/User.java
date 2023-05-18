@@ -18,7 +18,7 @@ public class User {
     int user_id;
     String user_name;
     String email;
-    Boolean isAdmin;
+    String role;
     String password;
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "user")
     private Booking booking;
