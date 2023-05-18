@@ -38,9 +38,9 @@ public class JwtUtil  {
     }
 
     //generate token
-    public String generateToken(String username) {
+    public String generateToken(String user_name) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
+        return createToken(claims, user_name);
     }
 
 
@@ -54,7 +54,7 @@ public class JwtUtil  {
 
     // validate token
     public Boolean validateToken(String token, UserDetails userDetails) {
-        final String userName = extractUsername(token);
-        return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        final String user_name = extractUsername(token);
+        return (user_name.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }

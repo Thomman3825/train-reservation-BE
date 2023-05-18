@@ -1,9 +1,6 @@
 package com.springboot.trainReservation.Schemas;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,11 +9,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class User {
     @Id
     @GeneratedValue
     int user_id;
-    String user_name;
+    String userName;
     String email;
     String role;
     String password;

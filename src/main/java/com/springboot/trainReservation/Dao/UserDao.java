@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserDao extends JpaRepository<User, Integer> {
     User findByUserName(String user_name);
+//    boolean isAdmin(String token);
 }

@@ -14,8 +14,6 @@ public class TrainServiceImp implements TrainService{
     @Autowired
     private TrianDao trainDao;
     @Autowired
-    User user;
-    @Autowired
     JwtUtil jwtUtil;
 
     @Override
@@ -24,11 +22,5 @@ public class TrainServiceImp implements TrainService{
         return "Train Added";
     }
 
-    @Override
-    public boolean isAdmin(String token) {
-        Claims claims = jwtUtil.extractAllClaims(token);
-        String role = (String) claims.get("role");
-        if(role=="Admin") return true;
-        else return false;
-    }
+
 }
